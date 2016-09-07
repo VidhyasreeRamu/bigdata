@@ -1,0 +1,19 @@
+
+map(key:bookid, value:csv)
+{
+emit("Total-Number-of-All-books",1)
+	      List<String> values = csv.split(,)
+        for ( String category:values)
+        {
+            emit(category,1)
+        }
+}
+reduce(String key, values: Iterable<Integer>)
+{
+	integer sum=0;
+	for(Integer i:values)
+	{
+		sum = sum+ i;
+	}
+	emit(key,sum);
+}
